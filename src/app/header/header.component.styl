@@ -1,0 +1,50 @@
+$margin-col = 2px
+
+col(col-num)
+  width ((100% * col-num) /12) - ($margin-col * 2)
+  margin $margin-col
+  box-sizing border-box
+
+.header
+  height 80px
+  background #E0E0E0
+
+.header__link
+  padding 16px 0
+  margin-right 5px
+  col(1)
+  display inline-block
+  float left
+
+.header__text
+  padding 28px 0 28px 10px
+  color #333333
+  font-size 20px
+  col(3)
+  display inline-block
+  float left
+
+.nav
+  col(9)
+  display inline-block
+
+.nav__list
+  width 350px
+  text-align center
+  height 40px
+  padding 9px
+  background #fff
+  float right
+
+.nav__list span
+  color #979797  
+
+.nav__item
+  display inline
+  padding-right 15px
+  padding-left 15px
+
+.nav__item-text
+  text-decoration none
+  color #333333
+  font-size 16px
