@@ -1,20 +1,20 @@
 <section class="transaction">
-  <h2>Nova transação</h2>
-  <form [formGroup]="actionForm">
-    <label for="transaction">Tipo de transação</label>
-    <select id="transaction" name="transaction" formControlName="actionControl">
+  <h2 class="transaction__title">Nova transação</h2>
+  <form class="transaction__form" [formGroup]="actionForm">
+    <label class="transaction__label-type" for="transaction">Tipo de transação</label>
+    <select class="transaction__select-type" id="transaction" name="transaction" formControlName="actionControl">
       <option [value]="action" *ngFor="let action of actions">{{action}}</option>
     </select>
-    <label for="name">Nome da mercadoria</label>
-    <input id="name" name="name" placeholder="Nome">
-    <label for="valor">Valor</label>
-    <input id="valor" valor="name" placeholder="R$ 0,00">
-    <button>Adicionar transação</button>
-  </form>  
+    <label class="transaction__label-name" for="name">Nome da mercadoria</label>
+    <input class="transaction__input-name" id="name" name="name" placeholder="Nome">
+    <label class="transaction__label-value" for="valor">Valor</label>
+    <input class="transaction__input-value"id="valor" valor="name" placeholder="R$ 0,00">
+    <button class="transaction__button-add">Adicionar transação</button>
+  </form>
 </section>
 <section class="account">
-  <h2>Extrato de transações</h2>
-  <table>
+  <h2 class="account__title">Extrato de transações</h2>
+  <table class="account__data">
     <thead>
       <tr>
         <th>Mercadoria</th>
