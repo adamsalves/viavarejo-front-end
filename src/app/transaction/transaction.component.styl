@@ -6,20 +6,24 @@ col(col-num)
   box-sizing border-box
 
 .transaction
-  col(5)
+  col(4.5)
   display inline-block
   border 1px solid #979797
   border-radius 5px
   padding 15px
 
 .account
-  col(7)
+  col(8)
   display inline-block
   position absolute
   padding 20px
 
 .transaction__form
+.account__data  
   margin-top 20px
+
+.account__data  
+  width 100%   
 
 .transaction__title
 .account__title  
@@ -54,3 +58,30 @@ col(col-num)
   font-size .9em
   cursor pointer
   margin-bottom 10px
+
+table
+  border-collapse collapse
+
+.account__list
+  border-top 1px solid black
+  border-bottom 1px solid black
+  height 40px
+
+.account__list--normal 
+  border none 
+  height 30px  
+
+.account__head
+  height 30px
+
+.account__head-merc  
+  text-align left 
+
+.account__item
+  font-weight bold
+  height 40px
+
+.account__desc
+  font-size .7em
+  text-align right
+  padding-right 35px
