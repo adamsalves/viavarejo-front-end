@@ -9,7 +9,7 @@ import { FormGroup, FormBuilder  } from '@angular/forms';
 export class TransactionComponent implements OnInit {
   transactionForm: FormGroup;
   actions = ['Compra', 'Venda']
-  transactions = []
+  transactions = localStorage.getItem('transactions') ? JSON.parse(localStorage.getItem('transactions')) : []
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {  
@@ -18,11 +18,15 @@ export class TransactionComponent implements OnInit {
       name: '',
       price: ''
     })
+    localStorage.setItem('transactions', JSON.stringify(this.transactions))
+    console.log(localStorage)
   }
   onSubmit() {
     this.transactions.push(this.transactionForm.value)
+    localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(this.transactionForm.value)
     console.log(this.transactions)
+    console.log(localStorage)
     this.transactionForm.reset()
   }
 }
