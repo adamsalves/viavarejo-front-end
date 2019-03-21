@@ -6,15 +6,15 @@
       <option [value]="action" *ngFor="let action of actions">{{action}}</option>
     </select>
     <label class="transaction__label-name" for="name">Nome da mercadoria</label>
-    <input class="transaction__input-name" id="name" name="name" placeholder="Nome" formControlName="name">
+    <input class="transaction__input-name" id="name" name="name" placeholder="Nome" formControlName="name" required>
     <label class="transaction__label-value" for="valor">Valor</label>
-    <input class="transaction__input-value"id="valor" valor="name" placeholder="R$ 0,00" formControlName="price">
+    <input class="transaction__input-value"id="valor" name="valor" placeholder="R$ 0,00" formControlName="price" required pattern="^(([1-9]\d{0,2}(\.\d{3})*)|(([1-9]\.\d*)?\d))(\,\d\d)?"> 
     <button class="transaction__button-add" type="submit">Adicionar transação</button>
   </form>
 </section>
 <section class="account">
   <h2 class="account__title">Extrato de transações</h2>
-  <table class="account__data">
+  <table *ngIf="transactions.length else empty" class="account__data">
     <thead class="account__head">
       <tr class="account__list account__list--normal">
         <th></th>
@@ -42,4 +42,7 @@
       </tr>
     </tfoot>
   </table>
+  <ng-template #empty>
+    <p>Nenhum resgistro cadastrado!</p>
+  </ng-template>
 </section>

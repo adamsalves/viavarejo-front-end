@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder  } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
 
 @Component({
   selector: 'app-transaction',
@@ -14,14 +14,16 @@ export class TransactionComponent implements OnInit {
 
   ngOnInit() {  
     this.transactionForm = this.fb.group({
-      transaction: ['Compra'],
-      name: '',
-      price: ''
+      transaction: ['Compra', Validators.required],
+      name:  ['', Validators.required],
+      price: ['', Validators.required]
     })
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(localStorage)
   }
   onSubmit() {
+    if(this.transactionForm.invalid) return;
+
     this.transactions.unshift(this.transactionForm.value)
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(this.transactionForm.value)
