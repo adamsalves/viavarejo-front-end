@@ -22,7 +22,7 @@ export class TransactionComponent implements OnInit {
     console.log(localStorage)
   }
   onSubmit() {
-    this.transactions.push(this.transactionForm.value)
+    this.transactions.unshift(this.transactionForm.value)
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(this.transactionForm.value)
     console.log(this.transactions)

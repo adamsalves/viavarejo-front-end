@@ -23,27 +23,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr class="account__list">
-        <td>+</td> 
-        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-        <td>R$ 10.000,00</td>
-      </tr>
-      <tr class="account__list">
-        <td>+</td> 
-        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-        <td>R$ 10.000,00</td>
-      </tr>
-      <tr class="account__list">
-        <td>+</td> 
-        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit</td>
-        <td>R$ 10.000,00</td>
+      <tr class="account__list" *ngFor="let transaction of transactions">
+        <td class="account__list-transaction">{{ (transaction.transaction == 'Compra') ? '+' : '-' }}</td> 
+        <td class="account__list-name">{{transaction.name}}</td>
+        <td class="account__list-price">R$ {{transaction.price}}</td>
       </tr>
     </tbody>
     <tfoot class="account__tfooter">
       <tr class="account__list account__list--normal">
         <td></td>
         <td class="account__item">Total</td>
-        <td class="account__item">R$ 10.000,00</td>
+        <td class="account__item account__item--text-center">R$ 10.000,00</td>
       </tr>
       <tr>
         <td></td>
