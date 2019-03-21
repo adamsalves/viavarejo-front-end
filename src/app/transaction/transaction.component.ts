@@ -10,6 +10,7 @@ export class TransactionComponent implements OnInit {
   transactionForm: FormGroup;
   actions = ['Compra', 'Venda']
   transactions = localStorage.getItem('transactions') ? JSON.parse(localStorage.getItem('transactions')) : []
+  submitted = false
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {  
@@ -20,8 +21,13 @@ export class TransactionComponent implements OnInit {
     })
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(localStorage)
+    console.log(this.transactionForm.errors)
   }
+  
+  get validate() { return this.transactionForm.controls; }
+  
   onSubmit() {
+    this.submitted = true
     if(this.transactionForm.invalid) return;
 
     this.transactions.unshift(this.transactionForm.value)

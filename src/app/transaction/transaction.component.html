@@ -2,13 +2,22 @@
   <h2 class="transaction__title">Nova transação</h2>
   <form class="transaction__form" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
     <label class="transaction__label-type" for="transaction">Tipo de transação</label>
-    <select class="transaction__select-type" id="transaction" name="transaction" formControlName="transaction">
+    <select class="transaction__select-type" id="transaction" name="transaction" formControlName="transaction" [ngClass]="{ 'transaction__select--invalid': submitted && validate.transaction.errors }" required>
       <option [value]="action" *ngFor="let action of actions">{{action}}</option>
     </select>
+    <div *ngIf="submitted && validate.transaction.errors" class="transaction__input-feedback">
+      <p *ngIf="validate.transaction.errors.required">Escolha um tipo de transação</p>
+    </div>
     <label class="transaction__label-name" for="name">Nome da mercadoria</label>
-    <input class="transaction__input-name" id="name" name="name" placeholder="Nome" formControlName="name" required>
+    <input class="transaction__input-name" id="name" name="name" placeholder="Nome" formControlName="name" [ngClass]="{ 'transaction__input-name--invalid': submitted && validate.name.errors }" required>
+    <div *ngIf="submitted && validate.name.errors" class="transaction__input-feedback">
+      <p *ngIf="validate.name.errors.required">Preencha o campo nome do produto</p>
+    </div>
     <label class="transaction__label-value" for="valor">Valor</label>
-    <input class="transaction__input-value"id="valor" name="valor" placeholder="R$ 0,00" formControlName="price" required pattern="^(([1-9]\d{0,2}(\.\d{3})*)|(([1-9]\.\d*)?\d))(\,\d\d)?"> 
+    <input class="transaction__input-value"id="valor" name="valor" placeholder="R$ 0,00" formControlName="price" [ngClass]="{ 'transaction__input-price--invalid': submitted && validate.price.errors }" required pattern="^(([1-9]\d{0,2}(\.\d{3})*)|(([1-9]\.\d*)?\d))(\,\d\d)?"> 
+    <div *ngIf="submitted && validate.price.errors" class="transaction__input-feedback">
+      <p *ngIf="validate.price.errors.required">Preencha o campo Preço (0,00/1.000,00)</p>
+    </div>
     <button class="transaction__button-add" type="submit">Adicionar transação</button>
   </form>
 </section>
