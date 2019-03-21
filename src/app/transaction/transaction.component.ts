@@ -7,15 +7,22 @@ import { FormGroup, FormBuilder  } from '@angular/forms';
   styleUrls: ['./transaction.component.styl']
 })
 export class TransactionComponent implements OnInit {
-
-  actionForm: FormGroup;
-
+  transactionForm: FormGroup;
   actions = ['Compra', 'Venda']
+  transactions = []
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {  
-    this.actionForm = this.fb.group({
-      actionControl: ['Compra']
-    });
+    this.transactionForm = this.fb.group({
+      transaction: ['Compra'],
+      name: '',
+      price: ''
+    })
+  }
+  onSubmit() {
+    this.transactions.push(this.transactionForm.value)
+    console.log(this.transactionForm.value)
+    console.log(this.transactions)
+    this.transactionForm.reset()
   }
 }

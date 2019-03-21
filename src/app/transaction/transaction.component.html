@@ -1,15 +1,15 @@
 <section class="transaction">
   <h2 class="transaction__title">Nova transação</h2>
-  <form class="transaction__form" [formGroup]="actionForm">
+  <form class="transaction__form" [formGroup]="transactionForm" (ngSubmit)="onSubmit()">
     <label class="transaction__label-type" for="transaction">Tipo de transação</label>
-    <select class="transaction__select-type" id="transaction" name="transaction" formControlName="actionControl">
+    <select class="transaction__select-type" id="transaction" name="transaction" formControlName="transaction">
       <option [value]="action" *ngFor="let action of actions">{{action}}</option>
     </select>
     <label class="transaction__label-name" for="name">Nome da mercadoria</label>
-    <input class="transaction__input-name" id="name" name="name" placeholder="Nome">
+    <input class="transaction__input-name" id="name" name="name" placeholder="Nome" formControlName="name">
     <label class="transaction__label-value" for="valor">Valor</label>
-    <input class="transaction__input-value"id="valor" valor="name" placeholder="R$ 0,00">
-    <button class="transaction__button-add">Adicionar transação</button>
+    <input class="transaction__input-value"id="valor" valor="name" placeholder="R$ 0,00" formControlName="price">
+    <button class="transaction__button-add" type="submit">Adicionar transação</button>
   </form>
 </section>
 <section class="account">
