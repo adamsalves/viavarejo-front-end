@@ -56,7 +56,7 @@ col(col-num)
   display none
   position absolute
   right 30px
-  top 35px
+  top 40px
   cursor pointer
   &:after
     content ''
@@ -80,7 +80,33 @@ col(col-num)
 
   .nav
     display none
-  
+
+  .nav--active
+    background #000
+    width 250px
+    height 100vh
+    z-index 1
+    display block
+    position absolute
+    right 0
+
+  .nav__item
+    display block
+    padding 10px 0
+    font-weight bold
+
+  .nav__list
+    width 100%
+    text-align right
+    background none  
+    padding 0 10px 0 0
+
+  .nav__list span
+    display none
+
+  .nav__item-text
+    color #fff      
+
   .menu-icon
     display block  
 
