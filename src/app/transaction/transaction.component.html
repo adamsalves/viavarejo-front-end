@@ -33,7 +33,7 @@
     </thead>
     <tbody>
       <tr class="account__list" *ngFor="let transaction of transactions">
-        <td class="account__list-transaction">{{ (transaction.transaction == 'Compra') ? '+' : '-' }}</td> 
+        <td class="account__list-transaction">{{ (transaction.transaction == 'Compra') ? '-' : '+' }}</td> 
         <td class="account__list-name">{{transaction.name}}</td>
         <td class="account__list-price">R$ {{transaction.price}}</td>
       </tr>
