@@ -49,10 +49,48 @@ col(col-num)
   color #333333
   font-size 16px
 
+.menu-icon
+  width 30px
+  height 4px
+  background #000
+  display none
+  position absolute
+  right 30px
+  top 35px
+  cursor pointer
+  &:after
+    content ''
+    width 30px
+    height 4px
+    background #000
+    position absolute
+    top 8px
+  &:before
+    content ''
+    width 30px
+    height 4px
+    background #000
+    position absolute
+    top -8px
+
 @media screen and (max-width 768px)
+  .header__text
+    col(11)
+    text-align center
+
+  .nav
+    display none
+  
+  .menu-icon
+    display block  
+
+@media screen and (max-width 411px)
+  .header__text
+    col(11)
+    text-align center  
+
   .nav
     display none
 
-@media screen and (max-width 411px)
-  .nav
-    display none  
+  .menu-icon
+    display block
