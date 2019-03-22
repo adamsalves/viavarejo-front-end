@@ -94,7 +94,7 @@ table
   text-align center
 
 .account__list-name
-  width 70%
+  width 80%
 
 .transaction__select--invalid
 .transaction__input-name--invalid
@@ -106,3 +106,52 @@ table
   margin -10px 0 0 0
   font-size 80%
   color #dc3545
+
+@media screen and (max-width 768px)
+  .transaction
+    col(12)
+    display block
+
+  .account
+    col(12)
+    display inline
+    position absolute
+    padding 0
+
+  .transaction__input-select-action
+    col(4)
+    display inline-block
+
+  .transaction__input-text-name
+    col(5)
+    display inline-block
+    margin-right 35px
+    margin-left 35px
+
+  .transaction__input-value-price 
+    col(3)
+    display inline-block
+
+  .transaction__button-add
+    col(6)
+    margin-left 365px
+
+@media screen and (max-width 411px)
+  .account
+    padding 10px
+    
+  .transaction__input-select-action
+    col(12)
+    display inline-block
+    
+  .transaction__input-text-name
+    col(12)
+    display inline-block
+
+  .transaction__input-value-price 
+    col(12)
+    display inline-block
+
+  .transaction__button-add
+    col(12)
+    margin 0
