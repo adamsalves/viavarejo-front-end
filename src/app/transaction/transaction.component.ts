@@ -11,7 +11,16 @@ export class TransactionComponent implements OnInit {
   actions = ['Compra', 'Venda']
   transactions = localStorage.getItem('transactions') ? JSON.parse(localStorage.getItem('transactions')) : []
   submitted = false
+  totalPrice = 0
   constructor(private fb: FormBuilder) {}
+
+  calculateTransaction() {
+    this.totalPrice = this.transactions.reduce((acc, elem, index, array) => {
+      const price = parseFloat(elem.price.replace(',', '.'))
+      const operator = (elem.transaction === 'Compra' ? '-': '+')
+      return (operator === '-') ? acc - price : acc + price
+    }, 0)
+  }
 
   ngOnInit() {  
     this.transactionForm = this.fb.group({
@@ -22,6 +31,7 @@ export class TransactionComponent implements OnInit {
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
     console.log(localStorage)
     console.log(this.transactionForm.errors)
+    this.calculateTransaction()
   }
   
   get validate() { return this.transactionForm.controls; }
@@ -35,6 +45,7 @@ export class TransactionComponent implements OnInit {
     console.log(this.transactionForm.value)
     console.log(this.transactions)
     console.log(localStorage)
+    this.calculateTransaction()
     this.transactionForm.reset()
   }
 }

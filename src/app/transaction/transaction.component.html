@@ -16,7 +16,7 @@
     <label class="transaction__label-value" for="valor">Valor</label>
     <input class="transaction__input-value"id="valor" name="valor" placeholder="R$ 0,00" formControlName="price" [ngClass]="{ 'transaction__input-price--invalid': submitted && validate.price.errors }" required pattern="^(([1-9]\d{0,2}(\.\d{3})*)|(([1-9]\.\d*)?\d))(\,\d\d)?"> 
     <div *ngIf="submitted && validate.price.errors" class="transaction__input-feedback">
-      <p *ngIf="validate.price.errors.required">Preencha o campo Preço (0,00/1.000,00)</p>
+      <p *ngIf="validate.price.errors.required">Preencha o campo Preço (0,00)</p>
     </div>
     <button class="transaction__button-add" type="submit">Adicionar transação</button>
   </form>
@@ -42,12 +42,12 @@
       <tr class="account__list account__list--normal">
         <td></td>
         <td class="account__item">Total</td>
-        <td class="account__item account__item--text-center">R$ 10.000,00</td>
+        <td class="account__item account__item--text-center">R$ {{totalPrice.toFixed(2).replace('.', ',')}}</td>
       </tr>
       <tr>
         <td></td>
         <td></td>
-        <td class="account__desc">[LUCRO]</td>
+        <td class="account__desc">{{(totalPrice.toFixed(2) > 0 ) ? '[LUCRO]' : '[PREZUÍZO]' }}</td>
       </tr>
     </tfoot>
   </table>
