@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators  } from '@angular/forms';
+import { Component, OnInit } from '@angular/core'
+import { FormGroup, FormBuilder, Validators  } from '@angular/forms'
 
 @Component({
   selector: 'app-transaction',
@@ -29,12 +29,11 @@ export class TransactionComponent implements OnInit {
       price: ['', Validators.required]
     })
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
-    console.log(localStorage)
-    console.log(this.transactionForm.errors)
+    
     this.calculateTransaction()
   }
   
-  get validate() { return this.transactionForm.controls; }
+  get validate() { return this.transactionForm.controls }
   
   onSubmit() {
     this.submitted = true
@@ -42,9 +41,7 @@ export class TransactionComponent implements OnInit {
 
     this.transactions.unshift(this.transactionForm.value)
     localStorage.setItem('transactions', JSON.stringify(this.transactions))
-    console.log(this.transactionForm.value)
-    console.log(this.transactions)
-    console.log(localStorage)
+   
     this.calculateTransaction()
     this.transactionForm.reset()
   }
